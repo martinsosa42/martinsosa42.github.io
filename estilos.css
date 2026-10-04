@@ -1,0 +1,35 @@
+/* Colores del sistema de diseño de la app (docs/design-system.md), claro y oscuro */
+:root {
+  --fondo: #ffffff; --tinta: #0a0a0a; --tenue: #5c5c5c; --tarjeta: #f4f4f4;
+  --linea: #e6e6e6; --acento: #e5322d; --sobre-acento: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #0a0a0a; --tinta: #ffffff; --tenue: #a3a3a3; --tarjeta: #1a1a1a;
+    --linea: #2a2a2a; --acento: #ff3b30; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 680px; margin: 0 auto; padding: 32px 20px 64px; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+header a.marca { color: var(--tinta); font-weight: 700; text-decoration: none; }
+nav.idiomas { display: flex; gap: 4px; }
+nav.idiomas button { font: inherit; font-size: 14px; border: 1.5px solid var(--linea); background: none; color: var(--tinta);
+  border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+nav.idiomas button[aria-pressed="true"] { border-color: var(--tinta); font-weight: 600; }
+h1 { font-size: 34px; line-height: 1.15; margin: 0 0 12px; text-wrap: balance; }
+h2 { font-size: 21px; margin: 32px 0 8px; }
+p, li { color: var(--tinta); }
+.tenue, small { color: var(--tenue); }
+a { color: var(--tinta); }
+.tarjeta { background: var(--tarjeta); border-radius: 24px; padding: 24px; margin: 24px 0; }
+.codigo { text-align: center; }
+.codigo span { display: block; font-size: 36px; font-weight: 700; letter-spacing: 8px; }
+ul.enlaces { list-style: none; padding: 0; display: grid; gap: 8px; }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--linea); font-size: 14px; color: var(--tenue);
+  display: flex; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--tenue); }
+[hidden] { display: none !important; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qué tengo en casa?</title>
+<link rel="stylesheet" href="/estilos.css">
+<script src="/idioma.js"></script>
+</head>
+<body>
+<main>
+<header>
+<a class="marca" href="/">Qué tengo en casa?</a>
+<nav class="idiomas" aria-label="Idioma / Language / Idioma">
+<button type="button" value="es">ES</button><button type="button" value="en">EN</button><button type="button" value="pt">PT</button>
+</nav>
+</header>
+<div data-idioma="es" hidden>
+<div id="inv-es"><h1>Te invitaron a una casa</h1>
+<p>Abrí este link desde el teléfono con Qué tengo en casa? instalada, o escribí el código en la app: <strong>Casa → Unirme con un código</strong>.</p>
+<div class="tarjeta codigo"><small>CÓDIGO DE INVITACIÓN</small><span class="codigo-valor"></span></div>
+<p class="tenue">Vale por 48 horas y sirve una sola vez.</p></div>
+<div id="nada-es"><h1>Esta página no existe</h1><p><a href="/">Ir al inicio</a></p></div>
+</div>
+<div data-idioma="en" hidden>
+<div id="inv-en"><h1>You were invited to a home</h1>
+<p>Open this link on your phone with Qué tengo en casa? installed, or type the code in the app: <strong>Home → Join with a code</strong>.</p>
+<div class="tarjeta codigo"><small>INVITATION CODE</small><span class="codigo-valor"></span></div>
+<p class="tenue">Valid for 48 hours and works only once.</p></div>
+<div id="nada-en"><h1>This page doesn't exist</h1><p><a href="/">Go to the home page</a></p></div>
+</div>
+<div data-idioma="pt" hidden>
+<div id="inv-pt"><h1>Você foi convidado para uma casa</h1>
+<p>Abra este link no celular com o Qué tengo en casa? instalado, ou digite o código no app: <strong>Casa → Entrar com um código</strong>.</p>
+<div class="tarjeta codigo"><small>CÓDIGO DE CONVITE</small><span class="codigo-valor"></span></div>
+<p class="tenue">Vale por 48 horas e serve uma vez só.</p></div>
+<div id="nada-pt"><h1>Esta página não existe</h1><p><a href="/">Ir para o início</a></p></div>
+</div>
+
+<div data-idioma="es" hidden><footer><a href="/">Inicio</a><a href="/privacidad.html">Privacidad</a><a href="/terminos.html">Términos</a><a href="/eliminar-cuenta.html">Eliminar la cuenta</a><span>Contacto: quetengoencasamss42@gmail.com</span></footer></div><div data-idioma="en" hidden><footer><a href="/">Home</a><a href="/privacidad.html">Privacy</a><a href="/terminos.html">Terms</a><a href="/eliminar-cuenta.html">Delete your account</a><span>Contact: quetengoencasamss42@gmail.com</span></footer></div><div data-idioma="pt" hidden><footer><a href="/">Início</a><a href="/privacidad.html">Privacidade</a><a href="/terminos.html">Termos</a><a href="/eliminar-cuenta.html">Excluir a conta</a><span>Contato: quetengoencasamss42@gmail.com</span></footer></div>
+</main>
+<script>
+// GitHub Pages sirve esta página para cualquier ruta que no existe, así
+// /invitacion/K7Q4MX llega acá. Si la app está instalada, Android la abre
+// antes (App Links) y esta página no se ve.
+(function () {
+  var partes = location.pathname.split('/').filter(Boolean);
+  var i = partes.indexOf('invitacion');
+  var codigo = i >= 0 && partes[i + 1] ? decodeURIComponent(partes[i + 1]).toUpperCase().replace(/[^A-Z0-9]/g, '') : '';
+  var valido = codigo.length === 6;
+  ['es', 'en', 'pt'].forEach(function (idioma) {
+    document.getElementById('inv-' + idioma).hidden = !valido;
+    document.getElementById('nada-' + idioma).hidden = valido;
+  });
+  document.querySelectorAll('.codigo-valor').forEach(function (el) {
+    el.textContent = codigo.slice(0, 3) + '-' + codigo.slice(3);
+  });
+})();
+</script>
+</body>
+</html>
